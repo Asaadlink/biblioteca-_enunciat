@@ -34,12 +34,14 @@ const biblioteca = JSON.parse(localStorage.getItem("biblioteca")) || [
 // Llista del llibres
 // const listaLibros = document.getElementById("listaLibros");
 
+// Mostrar la lista de libros disponibles en orden alfabético 
 function mostrarLibrosOrdenados() {
     const listaLibros = document.getElementById("listaLibros");
     listaLibros.innerHTML = ""; // Limpiar la lista
 
     const librosOrdenados = [...biblioteca].sort((a, b) => a.titulo.localeCompare(b.titulo));
 
+    // Crear un elemento <li> para cada libro y añadirlo a la lista
     librosOrdenados.forEach(libro => {
         const li = document.createElement("li");
         li.textContent = `${libro.titulo} - ${libro.autor}`;
@@ -57,7 +59,9 @@ mostrarLibrosOrdenados();
 // Las obras se mostrarán según aparece en la imagen modelo1.png
 // Hay que aplicar algunos estilos que ya están definidos en el css
 
+// Filtrar las obras según los criterios indicados en el formulario (categoría, idioma y época)
 function filtrarObras() {
+    // Obtener los valores seleccionados en los filtros
     const categoria = document.getElementById("categoria").value;
     const idioma = document.getElementById("idioma").value;
     const epoca = document.getElementById("epoca").value;
@@ -65,6 +69,7 @@ function filtrarObras() {
     const salidaFiltrada = document.getElementById("salidaFiltrada");
     salidaFiltrada.innerHTML = ""; 
 
+    // Filtrar las obras que cumplan con los criterios seleccionados
     const obrasFiltradas = biblioteca.filter(libro => {
         return (
             (categoria === "" || libro.categoria === categoria) &&
@@ -73,6 +78,7 @@ function filtrarObras() {
         );
     });
 
+    //Mostrar las obras filtradas o un mensaje si no hay coincidencias
     if (obrasFiltradas.length > 0) {
         obrasFiltradas.forEach(libro => {
             const div = document.createElement("div");
@@ -95,13 +101,16 @@ function filtrarObras() {
 // La salida por pantalla será en este formato:
 // Isaac Asimov : Yo, robot (ciencia-ficción, idioma : español, época : s.XX) 
 
+// Buscar obras según el nombre o parte del nombre del autor
 function filtrarPorAutor() {
     const autorInput = document.getElementById("autor").value.toLowerCase();
     const salidaAutor = document.getElementById("salidaAutor");
     salidaAutor.innerHTML = ""; // Limpiar resultados anteriores
 
+    // Filtrar las obras cuyo autor coincida (parcial o totalmente) con el texto ingresado
     const obrasPorAutor = biblioteca.filter(libro => libro.autor.toLowerCase().includes(autorInput));
 
+    // Mostrar las obras encontradas
     obrasPorAutor.forEach(libro => {
         const div = document.createElement("div");
         div.textContent = `${libro.autor} : ${libro.titulo} (${libro.categoria}, idioma: ${libro.idioma}, época: ${libro.epoca})`;
@@ -116,7 +125,9 @@ function filtrarPorAutor() {
 // Conseguir permanencia con LocalStorage
 // Actualizar automáticamente el listado de obras del ejercicio 1
 
+// A partir del formulario, añadir obras a la biblioteca y actualizar el listado automáticamente
 function agregarObra() {
+    // Obtener los valores ingresados en el formulario
     const titulo = document.getElementById("nuevoTitulo").value;
     const autor = document.getElementById("nuevoAutor").value;
     const categoria = document.getElementById("nuevaCategoria").value;
@@ -126,8 +137,10 @@ function agregarObra() {
     const nuevaObra = { titulo, autor, categoria, idioma, epoca };
     biblioteca.push(nuevaObra);
 
+    // Guardar la biblioteca actualizada en LocalStorage
     localStorage.setItem("biblioteca", JSON.stringify(biblioteca));
 
+    // Actualizar la lista de libros y mostrar un mensaje de éxito
     mostrarLibrosOrdenados();
     alert("Obra añadida correctamente.");
 }
@@ -139,24 +152,29 @@ function agregarObra() {
 // Actualizar automáticamente el listado de obras del ejercicio 1
 // Actualizar el LocalStorage
 
+// Seleccionar una obra del formulario y eliminarla de la biblioteca
 function eliminarObra() {
     const tituloSeleccionado = document.getElementById("selectObra").value;
 
+    // Buscar el índice de la obra seleccionada
     const indice = biblioteca.findIndex(libro => libro.titulo === tituloSeleccionado);
     if (indice !== -1) {
         biblioteca.splice(indice, 1);
         localStorage.setItem("biblioteca", JSON.stringify(biblioteca));
 
+        // Actualizar la lista de libros y el select
         mostrarLibrosOrdenados();
         actualizarSelectObras();
         alert("Obra eliminada correctamente.");
     }
 }
 
+// Actualizar el elemento <select> con las obras disponibles
 function actualizarSelectObras() {
     const selectObra = document.getElementById("selectObra");
     selectObra.innerHTML = ""; 
 
+    // Añadir una opción para cada obra en la biblioteca
     biblioteca.forEach(libro => {
         const option = document.createElement("option");
         option.value = libro.titulo;
