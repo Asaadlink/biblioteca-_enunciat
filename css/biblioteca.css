@@ -1,0 +1,137 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9; 
+    color: #333; 
+}
+
+header {
+    background-color: #4caf50; 
+    color: white; 
+    padding: 1rem 0;
+    text-align: center; 
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem; 
+}
+
+main {
+    padding: 1rem;
+    max-width: 800px; 
+    margin: 0 auto; 
+    background-color: white; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+section h2 {
+    font-size: 1.5rem; 
+    margin-bottom: 0.5rem;
+}
+
+details summary {
+    font-weight: bold; 
+    cursor: pointer; 
+    margin-bottom: 0.5rem;
+}
+
+details summary:hover {
+    color: #4caf50; 
+}
+
+/* Lista de libros */
+#listaLibros {
+    list-style: none; /* Quitar los puntos de la lista */
+    padding: 0;
+}
+
+#listaLibros li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd; 
+}
+
+#listaLibros li:last-child {
+    border-bottom: none; 
+}
+
+/* Formulario de filtros */
+form {
+    margin-bottom: 1rem; 
+}
+
+form div {
+    margin-bottom: 1rem; 
+}
+
+form label {
+    display: block; 
+    font-weight: bold; 
+    margin-bottom: 0.5rem;
+}
+
+form input,
+form select,
+form button {
+    width: 100%; 
+    padding: 0.5rem;
+    font-size: 1rem; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+}
+
+form button {
+    background-color: #4caf50; 
+    color: white; 
+    border: none;
+    cursor: pointer; 
+}
+
+form button:hover {
+    background-color: #45a049; 
+}
+
+/* Resultados filtrados */
+#salidaFiltrada,
+#salidaAutor {
+    margin-top: 1rem; 
+}
+
+.obra {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    background-color: #f9f9f9; 
+}
+
+/* Formularios para añadir y quitar libros */
+#incluirObra div,
+#formQuitarObra div {
+    margin-bottom: 1rem; 
+}
+
+#selectObra {
+    width: 100%; 
+    padding: 0.5rem;
+    font-size: 1rem; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+}
+
+
+footer {
+    text-align: center; 
+    padding: 1rem;
+    background-color: #4caf50; 
+    color: white; 
+    margin-top: 2rem; 
+    border-radius: 0 0 8px 8px; 
+}

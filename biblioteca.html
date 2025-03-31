@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Biblioteca</title>
+    <link rel="stylesheet" href="/css/biblioteca.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Mini Biblioteca</h1>
+    </header>
+    <main>
+      <!-- SECCIÓN 1: Mostrar libros disponibles -->
+      <section>
+        <h2>1. Libros disponibles</h2>
+        <p>Obras de la colección en orden alfabético según el título:</p>
+        <div id="ejer1">
+          <ul id="listaLibros"></ul>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: Filtrar obras por tema, idioma y época -->
+      <section>
+        <details>
+          <summary>2. Sugerencias de obras por tema e idioma</summary>
+          <form id="form-filtrado">
+            <fieldset>
+              <!-- Filtro por categoría -->
+              <div>
+                <h3>Categorías:</h3>
+                <select id="categoria">
+                  <option value="">Sin especificar</option>
+                  <option value="drama">Drama</option>
+                  <option value="aventuras">Aventuras</option>
+                  <option value="ciencia-ficción">Ciencia-ficción</option>
+                  <option value="poesia">Poesía</option>
+                  <option value="misterio">Misterio</option>
+                </select>
+              </div>
+
+              <!-- Filtro por idioma -->
+              <div>
+                <h3>Idioma:</h3>
+                <select id="idioma">
+                  <option value="">Sin especificar</option>
+                  <option value="català">Català</option>
+                  <option value="español">Español</option>
+                </select>
+              </div>
+
+              <!-- Filtro por época -->
+              <div>
+                <h3>Época:</h3>
+                <select id="epoca">
+                  <option value="">Sin especificar</option>
+                  <option value="clásica">Clásica</option>
+                  <option value="s.XIX">S. XIX</option>
+                  <option value="s.XX">S. XX</option>
+                </select>
+              </div>
+            </fieldset>
+          </form>
+          <div id="ejer2">
+            <button type="button" onclick="filtrarObras()">Filtrar obras</button>
+            <div id="salidaFiltrada"></div>
+          </div>
+        </details>
+      </section>
+
+      <!-- SECCIÓN 3: Filtrar obras por autor -->
+      <section>
+        <details>
+          <summary>3. Filtrar por autor</summary>
+          <p>Busca obras según el nombre o parte del nombre de un autor:</p>
+          <form id="form-autor">
+            <label for="autor">Nombre del autor:</label>
+            <input type="text" id="autor" placeholder="Escribe el nombre del autor" />
+            <button type="button" onclick="filtrarPorAutor()">Buscar</button>
+          </form>
+          <div id="ejer3">
+            <div id="salidaAutor"></div>
+          </div>
+        </details>
+      </section>
+
+      <!-- SECCIÓN 4: Añadir obra a la biblioteca -->
+      <section>
+        <details>
+          <summary>4. Añadir obra a la biblioteca</summary>
+          <form id="incluirObra" onsubmit="agregarObra(); return false;">
+            <div>
+              <label for="nuevoTitulo">Título:</label>
+              <input type="text" id="nuevoTitulo" required />
+            </div>
+            <div>
+              <label for="nuevoAutor">Autor:</label>
+              <input type="text" id="nuevoAutor" required />
+            </div>
+            <div>
+              <label for="nuevaCategoria">Categoría:</label>
+              <input type="text" id="nuevaCategoria" required />
+            </div>
+            <div>
+              <label for="nuevoIdioma">Idioma:</label>
+              <input type="text" id="nuevoIdioma" required />
+            </div>
+            <div>
+              <label for="nuevaEpoca">Época:</label>
+              <input type="text" id="nuevaEpoca" required />
+            </div>
+            <button type="submit">Añadir obra</button>
+          </form>
+        </details>
+      </section>
+
+      <!-- SECCIÓN 5: Quitar obra de la biblioteca -->
+      <section>
+        <details>
+          <summary>5. Quitar obra de la biblioteca</summary>
+          <form id="formQuitarObra">
+            <div>
+              <label for="selectObra">Selecciona una obra:</label>
+              <select id="selectObra"></select>
+            </div>
+            <button type="button" onclick="eliminarObra()">Quitar obra</button>
+          </form>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <p>Mini Biblioteca - Proyecto</p>
+    </footer>
+
+    <script src="js/biblioteca.js"></script>
+  </body>
+</html>
